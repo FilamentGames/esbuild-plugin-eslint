@@ -2,6 +2,7 @@ const { ESLint } = require('eslint');
 
 module.exports = ({
   filter = /\.(jsx?|tsx?|vue|svelte)$/,
+  filterFunc = (path) => true,
   ...eslintOptions
 } = {}) => ({
   name: 'eslint',
@@ -10,7 +11,7 @@ module.exports = ({
     const filesToLint = [];
 
     build.onLoad({ filter }, ({ path }) => {
-      if (!path.includes('node_modules')) {
+      if (!path.includes('node_modules') && filterFunc(path)) {
         filesToLint.push(path);
       }
     });

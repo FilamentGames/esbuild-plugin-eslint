@@ -6,6 +6,8 @@ const watch = process.argv.includes('--dev');
 
 build({
   entryPoints: [ join(__dirname, 'to-lint.js') ],
-  plugins: [ eslint() ],
+  plugins: [ eslint({
+    filterFunc: (path) => true
+  }) ],
   watch
 });

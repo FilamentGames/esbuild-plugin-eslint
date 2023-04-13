@@ -7,7 +7,8 @@ await esbuild.build({
   entryPoints: [ absolute("cases") ],
   plugins: [ eslint({
     throwOnError: false,
-    throwOnWarning: false
+    throwOnWarning: false,
+    filterFunc: (path) => true
   }) ],
   bundle: true,
   write: false

@@ -6,6 +6,7 @@ export default ({
   filter = /\.(?:jsx?|tsx?|vue|svelte)$/,
   throwOnWarning = false,
   throwOnError = false,
+  filterFunc = (path) => true,
   ...eslintOptions
 }: PluginOptions = {}): Plugin => ({
   name: "eslint",
@@ -14,7 +15,7 @@ export default ({
     const filesToLint: OnLoadArgs["path"][] = [];
 
     onLoad({ filter }, ({ path }) => {
-      if (!path.includes("node_modules")) {
+      if (!path.includes("node_modules") && filterFunc(path)) {
         filesToLint.push(path);
       }
 

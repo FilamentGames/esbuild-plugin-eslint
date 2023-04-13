@@ -15,4 +15,9 @@ export interface PluginOptions extends ESLint.Options {
    * controls whether or not to forward an error to esbuild when eslint reports any errors
    */
   throwOnError?: boolean,
+
+  /**
+   * control whether the path should be included
+   */
+  filterFunc?: (path:string) => boolean,
 }

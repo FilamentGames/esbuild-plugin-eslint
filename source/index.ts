@@ -6,7 +6,7 @@ export default ({
   filter = /\.(?:jsx?|tsx?|vue|svelte)$/,
   throwOnWarning = false,
   throwOnError = false,
-  filterFunc = (path) => true,
+  filterFunc = (path:string):boolean => true,
   ...eslintOptions
 }: PluginOptions = {}): Plugin => ({
   name: "eslint",
